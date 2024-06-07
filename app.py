@@ -34,13 +34,13 @@ llm_chain = LLMChain(
 st.set_page_config(
     page_title="youright",
     page_icon="✨",
-    layout = "wide"
+    layout = "centered"
 )
 st.title('Sukoon')
 
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [
-        {"role":"assistant","content":"Hey! how are you?"}
+        {"role":"assistant","content":"Hey, how are you today?"}
     ]
     count +=1
 
@@ -72,7 +72,7 @@ else: context_text = context_text+" | your last response: "+ st.session_state.me
 if st.session_state.messages[-1]['role']!= 'assistant':
     with st.chat_message('assistant'):
         with st.spinner("just a sec..."):
-            #ai_response = llm_chain.predict(question=user_prompt)
+
             user_prompt = context_text + user_prompt
             ai_response = llm_chain.predict(question=user_prompt)
 
